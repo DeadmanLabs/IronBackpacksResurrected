@@ -33,6 +33,7 @@ public class DiamondBackpack extends Item {
         if (!world.isClientSide()) {
             BlockPos playerPos = player.blockPosition();
         }
+        return super.use(world, player, hand);
     }
 
     @Override

@@ -1,4 +1,4 @@
-package com.deadman.ironbackpacks.client.gui;
+package com.iron.ironbackpacks.client.gui;
 
 import net.minecraft.world.level.Level;
 import net.minecraft.world.entity.player.Player;
@@ -8,11 +8,11 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.gui.GuiGraphics;
 
-import com.mojang.blaze3d.systems.RenderSystem;
+import com.iron.ironbackpacks.world.inventory.BasicMenu;
 
 import java.util.HashMap;
 
-import com.deadman.ironbackpacks.world.inventory.BasicMenu;
+import com.mojang.blaze3d.systems.RenderSystem;
 
 public class BasicScreen extends AbstractContainerScreen<BasicMenu> {
     private final static HashMap<String, Object> guistate = BasicMenu.guistate;
@@ -31,7 +31,7 @@ public class BasicScreen extends AbstractContainerScreen<BasicMenu> {
         this.imageHeight = 149;
     }
 
-    private static final ResourceLocation texture = ResourceLocation.parse("ironbackpacks:textures/gui/hardcodes/basic.png");
+    private static final ResourceLocation texture = ResourceLocation.parse("ironbackpacks:textures/screens/basic.png");
 
     @Override
     public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTicks) {
@@ -60,7 +60,7 @@ public class BasicScreen extends AbstractContainerScreen<BasicMenu> {
 
     @Override
     protected void renderLabels(GuiGraphics guiGraphics, int mouseX, int mouseY) {
-        guiGraphics.drawString(this.font, Component.literal("Basic Backpack"), 7, 9, -12829636, false);
+        guiGraphics.drawString(this.font, Component.literal("Backpack"), 7, 9, -12829636, false);
     }
 
     @Override

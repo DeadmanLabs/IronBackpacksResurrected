@@ -13,6 +13,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.inventory.ContainerLevelAccess;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.Entity;
@@ -40,7 +41,7 @@ public class BasicMenu extends AbstractContainerMenu implements Supplier<Map<Int
     private BlockEntity boundBlockEntity = null;
 
     public BasicMenu(int id, Inventory inv, FriendlyByteBuf extraData) {
-        super(Menus.BASIC.get(), id);
+        super(Menus.BASIC_SCREEN.get(), id);
         this.entity = inv.player;
         this.world = inv.player.level();
         this.internal = new ItemStackHandler(18);
@@ -81,7 +82,7 @@ public class BasicMenu extends AbstractContainerMenu implements Supplier<Map<Int
             }
         }
         for (int i = 0; i < 2; i++) {
-           for (int j = 0; j < 9; i++) {
+           for (int j = 0; j < 9; j++) {
                this.customSlots.put((i * 9) + j, this.addSlot(new SlotItemHandler(internal, (i * 9) + j, 7 + (j * 18), 24 + (i * 18))));
            } 
         }
@@ -123,11 +124,11 @@ public class BasicMenu extends AbstractContainerMenu implements Supplier<Map<Int
                 slot.onQuickCraft(itemstack1, itemstack);
             } else if (!this.moveItemStackTo(itemstack1, 0, 18, false)) {
                 if (index < 18 + 27) {
-                    if (!this.moveItemStacksTo(itemstack1, 18 + 27, this.slots.size(), true)) {
+                    if (!this.moveItemStackTo(itemstack1, 18 + 27, this.slots.size(), true)) {
                         return ItemStack.EMPTY;
                     }
                 } else {
-                    if (!this.moveItemStacksTo(itemstack1, 18, 18 + 27, false)) {
+                    if (!this.moveItemStackTo(itemstack1, 18, 18 + 27, false)) {
                         return ItemStack.EMPTY;
                     }
                 }
