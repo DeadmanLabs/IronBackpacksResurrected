@@ -16,6 +16,9 @@ import net.neoforged.neoforge.common.extensions.IMenuTypeExtension;
 
 import com.deadman.ironbackpacks.IronBackpacks;
 import com.deadman.ironbackpacks.client.gui.BasicScreen;
+import com.deadman.ironbackpacks.client.gui.IronStorageScreen;
+import com.deadman.ironbackpacks.client.gui.GoldStorageScreen;
+import com.deadman.ironbackpacks.client.gui.DiamondStorageScreen;
 
 @EventBusSubscriber(modid = IronBackpacks.MODID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class Screens {
@@ -24,6 +27,18 @@ public class Screens {
         event.register(
             Menus.BASIC_SCREEN.get(),
             BasicScreen::new
+        );
+        event.register(
+            Menus.IRON_STORAGE_SCREEN.get(),
+            IronStorageScreen::new
+        );
+        event.register(
+            Menus.GOLD_STORAGE_SCREEN.get(),
+            GoldStorageScreen::new
+        );
+        event.register(
+            Menus.DIAMOND_STORAGE_SCREEN.get(),
+            DiamondStorageScreen::new
         );
     }
 }
