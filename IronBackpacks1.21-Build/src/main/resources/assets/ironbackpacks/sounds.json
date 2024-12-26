@@ -1,10 +1,20 @@
 {
-  "open_backpack": {
-    "category": "player",
-    "sounds": [ "ironbackpacks:open_backpack_sound" ]
+  "open_backpack_sound": {
+    "sounds": [
+      {
+        "name": "ironbackpacks:open_backpack_sound",
+        "volume": 1.0,
+        "pitch": 1.0
+      }
+    ]
   },
-  "close_backpack": {
-    "category": "player",
-    "sounds": [ "ironbackpacks:close_backpack_sound" ]
+  "close_backpack_sound": {
+    "sounds": [
+      {
+        "name": "ironbackpacks:close_backpack_sound",
+        "volume": 1.0,
+        "pitch": 1.0
+      }
+    ]
   }
 }

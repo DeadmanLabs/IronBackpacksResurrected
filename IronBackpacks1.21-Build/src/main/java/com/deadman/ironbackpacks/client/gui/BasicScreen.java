@@ -1,5 +1,8 @@
 package com.deadman.ironbackpacks.client.gui;
 
+import com.mojang.logging.LogUtils;
+import net.minecraft.client.Minecraft;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.player.Inventory;
@@ -13,8 +16,11 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import java.util.HashMap;
 
 import com.deadman.ironbackpacks.world.inventory.BasicMenu;
+import com.deadman.ironbackpacks.init.Sounds;
+import org.slf4j.Logger;
 
 public class BasicScreen extends AbstractContainerScreen<BasicMenu> {
+    private static final Logger LOGGER = LogUtils.getLogger();
     private final static HashMap<String, Object> guistate = BasicMenu.guistate;
     private final Level world;
     private final int x, y, z;
@@ -53,6 +59,7 @@ public class BasicScreen extends AbstractContainerScreen<BasicMenu> {
     public boolean keyPressed(int key, int b, int c) {
         if (key == 256) {
             this.minecraft.player.closeContainer();
+            this.minecraft.player.playSound(Sounds.CLOSE_BACKPACK_SOUND.get(), 1.0F, 1.1F);
             return true;
         }
         return super.keyPressed(key, b, c);
@@ -66,5 +73,6 @@ public class BasicScreen extends AbstractContainerScreen<BasicMenu> {
     @Override
     public void init() {
         super.init();
+        this.minecraft.player.playSound(Sounds.OPEN_BACKPACK_SOUND.get(), 1.0F, 1.0F);
     }
 }

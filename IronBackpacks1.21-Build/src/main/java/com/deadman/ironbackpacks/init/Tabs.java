@@ -19,6 +19,9 @@ public class Tabs {
             .icon(() -> new ItemStack(ModItems.BASIC_BACKPACK.get()))
             .displayItems((parameters, output) -> {
                 output.accept(ModItems.BASIC_BACKPACK.get());
+                output.accept(ModItems.IRON_STORAGE_BACKPACK.get());
+                output.accept(ModItems.GOLD_STORAGE_BACKPACK.get());
+                output.accept(ModItems.DIAMOND_STORAGE_BACKPACK.get());
             })
             .withSearchBar()
             .build()

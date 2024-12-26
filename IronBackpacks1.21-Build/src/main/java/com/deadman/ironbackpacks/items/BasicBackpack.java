@@ -1,5 +1,8 @@
 package com.deadman.ironbackpacks.items;
 
+import com.deadman.ironbackpacks.init.Sounds;
+import com.mojang.logging.LogUtils;
+import net.minecraft.client.Minecraft;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.Rarity;
@@ -29,8 +32,10 @@ import java.util.List;
 
 import com.deadman.ironbackpacks.init.DataComponents;
 import com.deadman.ironbackpacks.world.inventory.BasicMenu;
+import org.slf4j.Logger;
 
 public class BasicBackpack extends Item {
+    private static final Logger LOGGER = LogUtils.getLogger();
     public BasicBackpack() {
         super(new Item.Properties().stacksTo(1).rarity(Rarity.COMMON));
     }

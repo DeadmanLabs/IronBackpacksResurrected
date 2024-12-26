@@ -1,4 +1,4 @@
-package com.deadman.ironbackpacks.item.data;
+package com.deadman.ironbackpacks.items.data;
 
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.ItemStack;

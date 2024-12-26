@@ -6,8 +6,10 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.network.chat.Component;
 
 import com.deadman.ironbackpacks.world.inventory.DiamondStorageMenu;
+import com.deadman.ironbackpacks.init.Sounds;
 
 import java.util.HashMap;
 
@@ -30,10 +32,10 @@ public class DiamondStorageScreen extends AbstractContainerScreen<DiamondStorage
         this.imageHeight = 182;
     }
 
-    private static final ResourceLocation texture = ResourceLocation.parse("ironbackpacks:textures/gui/hardcodes/diamond_storage");
+    private static final ResourceLocation texture = ResourceLocation.parse("ironbackpacks:textures/gui/hardcodes/diamond_storage.png");
 
     @Override
-    public void render(GuiGraphics guiGraphics int mouseX, int mouseY, float partialTicks) {
+    public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTicks) {
         this.renderBackground(guiGraphics, mouseX, mouseY, partialTicks);
         super.render(guiGraphics, mouseX, mouseY, partialTicks);
         this.renderTooltip(guiGraphics, mouseX, mouseY);
@@ -52,6 +54,7 @@ public class DiamondStorageScreen extends AbstractContainerScreen<DiamondStorage
     public boolean keyPressed(int key, int b, int c) {
         if (key == 256) {
             this.minecraft.player.closeContainer();
+            this.minecraft.player.playSound(Sounds.CLOSE_BACKPACK_SOUND.get(), 1.0F, 1.0F);
             return true;
         }
         return super.keyPressed(key, b, c);
@@ -65,5 +68,6 @@ public class DiamondStorageScreen extends AbstractContainerScreen<DiamondStorage
     @Override
     public void init() {
         super.init();
+        this.minecraft.player.playSound(Sounds.OPEN_BACKPACK_SOUND.get(), 1.0F, 1.0F);
     }
 }

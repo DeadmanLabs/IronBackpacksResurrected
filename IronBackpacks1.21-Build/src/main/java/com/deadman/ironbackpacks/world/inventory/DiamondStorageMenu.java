@@ -19,7 +19,7 @@ import net.neoforged.neoforge.items.SlotItemHandler;
 import net.neoforged.neoforge.items.ItemStackHandler;
 import net.neoforged.neoforge.items.IItemHandlerModifiable;
 import net.neoforged.neoforge.items.IItemHandler;
-import net.neoforged.neoforge.capabilities.Capabiltiies;
+import net.neoforged.neoforge.capabilities.Capabilities;
 
 import java.util.function.Supplier;
 import java.util.Map;
@@ -41,7 +41,7 @@ public class DiamondStorageMenu extends AbstractContainerMenu implements Supplie
     private BlockEntity boundBlockEntity = null;
 
     public DiamondStorageMenu(int id, Inventory inv, FriendlyByteBuf extraData) {
-        super(Menus.DIAMOND_STORAGE.get(), id);
+        super(Menus.DIAMOND_STORAGE_SCREEN.get(), id);
         this.entity = inv.player;
         this.world = inv.player.level();
         this.internal = new ItemStackHandler(77);
@@ -60,26 +60,26 @@ public class DiamondStorageMenu extends AbstractContainerMenu implements Supplie
                 this.boundItemMatcher = () -> itemstack == (hand == 0 ? this.entity.getMainHandItem() : this.entity.getOffhandItem());
                 IItemHandler cap = itemstack.getCapability(Capabilities.ItemHandler.ITEM);
                 if (cap != null) {
-                    this.internal = cap;
-                    this.bound = true;
-                } else if (extraData.readableBytes() > 1) { // bound to entity
-                    extraData.readByte(); // drop padding
-                    boundEntity = world.getEntity(extraData.readVarInt());
-                    if (boundEntity != null) {
-                        IItemHandler cap = boundEntity.getCapability(Capabilities.ItemHandler.ENTITY);
-                        if (cap != null) {
-                            this.internal = cap;
-                            this.bound = true;
-                        }
-                    }
-                } else { // might be bound to block
-                    boundBlockEntity = this.world.getBlockEntity(pos);
-                    if (boundBlockEntity instanceof BaseContainerBlockEntity baseContainerBlockEntity) {
-                        this.internal = new InvWrapper(baseContainerBlockEntity);
-                        this.bound = true;
-                    }
-                }
-            }
+					this.internal = cap;
+					this.bound = true;
+				}
+			} else if (extraData.readableBytes() > 1) { // bound to entity
+				extraData.readByte(); // drop padding
+				boundEntity = world.getEntity(extraData.readVarInt());
+				if (boundEntity != null) {
+					IItemHandler cap = boundEntity.getCapability(Capabilities.ItemHandler.ENTITY);
+					if (cap != null) {
+						this.internal = cap;
+						this.bound = true;
+					}
+				}
+			} else { // might be bound to block
+				boundBlockEntity = this.world.getBlockEntity(pos);
+				if (boundBlockEntity instanceof BaseContainerBlockEntity baseContainerBlockEntity) {
+					this.internal = new InvWrapper(baseContainerBlockEntity);
+					this.bound = true;
+				}
+			}
             for (int i = 0; i < 7; i++) {
                 for (int j = 0; j < 11; j++) {
                     this.customSlots.put(

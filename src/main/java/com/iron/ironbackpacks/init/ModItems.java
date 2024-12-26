@@ -6,6 +6,6 @@ public class ModItems {
     public static final DeferredRegister.Items REGISTRY = DeferredRegister.createItems(QuantumQuarry.MODID);
     public static final DeferredItem<BackpackBasicItem> BACKPACK_BASIC = REGISTRY.register(
         "backpack_basic",
-        Item::new
+        BackpackBasicItem::new
     );
 }

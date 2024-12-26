@@ -39,6 +39,7 @@ import com.deadman.ironbackpacks.init.Screens;
 import com.deadman.ironbackpacks.init.ModItems;
 import com.deadman.ironbackpacks.init.Menus;
 import com.deadman.ironbackpacks.init.DataComponents;
+import com.deadman.ironbackpacks.init.Sounds;
 
 // The value here should match an entry in the META-INF/neoforge.mods.toml file
 @Mod(IronBackpacks.MODID)
@@ -70,6 +71,7 @@ public class IronBackpacks
         CREATIVE_MODE_TABS.register(modEventBus);
         DataComponents.REGISTRY.register(modEventBus);
         Menus.REGISTRY.register(modEventBus);
+        Sounds.REGISTRY.register(modEventBus);
         // Register ourselves for server and other game events we are interested in.
         // Note that this is necessary if and only if we want *this* class (ExampleMod) to respond directly to events.
         // Do not add this line if there are no @SubscribeEvent-annotated functions in this class, like onServerStarting() below.

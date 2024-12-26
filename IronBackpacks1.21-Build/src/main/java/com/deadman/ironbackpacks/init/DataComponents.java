@@ -24,7 +24,7 @@ import java.util.List;
 import com.mojang.serialization.Codec;
 
 import com.deadman.ironbackpacks.IronBackpacks;
-import com.deadman.ironbackpacks.item.data.Contents;
+import com.deadman.ironbackpacks.items.data.Contents;
 
 public class DataComponents {
     public static final DeferredRegister.DataComponents REGISTRY = DeferredRegister.createDataComponents(IronBackpacks.MODID);
